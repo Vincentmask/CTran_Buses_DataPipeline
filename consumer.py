@@ -89,7 +89,7 @@ if __name__ == '__main__':
         while True:
             msg = consumer.poll(1.0)
             #once the data is all consumed we start transformation
-            if done == 5 and len(out) > 0:
+            if( msg is None and done == 0):
                 # Summary: There were hundreds of thousands of bus records 
                 #           in a day but not millions.
                 #data = pd.read_json(fname)
@@ -133,6 +133,7 @@ if __name__ == '__main__':
                 #transformation done, dump back to out.json
                 with open(fname, mode = 'w', encoding = 'utf-8') as f:
                     json.dump(obj, f, indent = 4)
+                    done = 1
 
 
                 #Clear data for the next day
@@ -148,7 +149,6 @@ if __name__ == '__main__':
                 # rebalance and start consuming
                 print("Waiting for message or event/error in poll()")
                 #if there is wait then we are done for the day
-                done += 1
                 continue
             elif msg.error():
                 print('error: {}'.format(msg.error()))
