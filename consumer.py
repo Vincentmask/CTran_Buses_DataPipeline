@@ -76,7 +76,6 @@ if __name__ == '__main__':
     else:
         strdow = "Sunday"
 
-    fname = d + 'out.json'
 
     # Process messages
     fname = d + 'out.json'
