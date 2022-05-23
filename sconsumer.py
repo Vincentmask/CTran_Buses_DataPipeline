@@ -107,6 +107,9 @@ if __name__ == '__main__':
                 # 1 means out and all other will be backbound
                 else:
                     entry['direction'] = 'Back'
+                # route number can't be null
+                if(str(entry['route_number']) == ''):
+                    entry['route_number'] = '0'
                 out.append(entry)
 
     except KeyboardInterrupt:
