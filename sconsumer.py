@@ -101,9 +101,10 @@ if __name__ == '__main__':
 
                 entry = {}
                 entry = value
-
+                # Transform direction to Out or Back for the use of data base
                 if(str(entry['direction']) == ' 1'):
-                    entry['direction'] = 'Out'
+                    entry['direction'] = 'Out'   
+                # 1 means out and all other will be backbound
                 else:
                     entry['direction'] = 'Back'
                 out.append(entry)
